@@ -11,6 +11,7 @@
             height: 100vh;
             background: url('Background.jpg') center/cover no-repeat;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             overflow: hidden;
@@ -37,6 +38,7 @@
             border: 2px solid rgba(0, 255, 0, 0.8);
             animation: glow 2s infinite alternate;
             background: rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
         }
         @keyframes glow {
             from {
@@ -51,19 +53,21 @@
             width: 100%;
             object-fit: cover;
         }
-        .audio-player {
+        .audio-section {
             position: relative;
-            width: 100%;
+            width: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            border: 2px solid rgba(255, 0, 0, 0.8);
             background: rgba(0, 0, 0, 0.8);
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
         }
         audio {
             width: 100%;
             display: block;
             border: none;
             outline: none;
+            background: transparent;
         }
         canvas {
             position: absolute;
@@ -80,10 +84,10 @@
 <body>
     <div class="container">
         <img src="single-cover.jpg" alt="Single Cover" class="album-art">
-        <div class="audio-player">
-            <audio id="audio" src="PaseMapPasE.mp3" controls></audio>
-            <canvas id="canvas"></canvas>
-        </div>
+    </div>
+    <div class="audio-section">
+        <audio id="audio" src="PaseMapPasE.mp3" controls></audio>
+        <canvas id="canvas"></canvas>
     </div>
     <script>
         const audio = document.getElementById("audio");
