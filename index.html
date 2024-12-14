@@ -14,17 +14,24 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            font-family: Arial, sans-serif;
         }
         .container {
             position: relative;
-            width: 90%;
-            max-width: 400px;
-            height: auto;
-            aspect-ratio: 1 / 1; /* Ensures a square layout */
+            width: 400px;
+            height: 400px;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            border: 2px solid transparent;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px 2px rgba(40, 167, 69, 0.4);
+            }
+            to {
+                box-shadow: 0 0 20px 4px rgba(40, 167, 69, 0.6);
+            }
         }
         .album-art {
             position: absolute;
@@ -44,25 +51,15 @@
                 transform: scale(1.05);
             }
         }
-        .glow {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            box-shadow: 0 0 20px 5px #28a745;
-            border: 2px solid #28a745;
-            box-sizing: border-box;
-            pointer-events: none;
-        }
         .song-info {
             position: absolute;
-            bottom: 10px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             color: #fff;
+            font-family: Arial, sans-serif;
             text-align: center;
-            font-size: 1em;
+            font-size: 1.2em;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             z-index: 2;
         }
@@ -72,35 +69,38 @@
             width: 90%;
             left: 5%;
             z-index: 2;
-            max-width: 300px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            outline: none;
+            color: white;
         }
-        @media (min-width: 768px) {
-            .container {
-                max-width: 600px; /* Larger size for tablets */
-            }
-            .song-info {
-                font-size: 1.2em;
-            }
+        audio::-webkit-media-controls-panel {
+            background-color: rgba(0, 0, 0, 0.6);
         }
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 800px; /* Larger size for desktops */
-            }
-            .song-info {
-                font-size: 1.5em;
-            }
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display,
+        audio::-webkit-media-controls-timeline,
+        audio::-webkit-media-controls-volume-slider {
+            filter: brightness(0.9);
+        }
+        audio::-webkit-media-controls-enclosure {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        audio::-webkit-media-controls-playback-rate-button {
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="glow"></div>
-        <img src="album-art.jpg" alt="Album Art" class="album-art">
+        <img src="single-cover.jpg" alt="Single Cover" class="album-art">
         <div class="song-info">
             <div>Pasé Nap Pasé - ZoeSthenn</div>
         </div>
-        <!-- Audio player with download disabled -->
-        <audio id="audio" src="your-song.mp3" controls controlsList="nodownload"></audio>
+        <audio id="audio" src="PaseMapPasE.mp3" controls></audio>
     </div>
 </body>
 </html>
